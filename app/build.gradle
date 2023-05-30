@@ -82,6 +82,10 @@ compileJava {
 	options.encoding = 'UTF-8'
 }
 
+openApi {
+	apiDocsUrl.set("http://localhost:5001/v3/api-docs ")
+}
+
 wrapper {
 	gradleVersion = '7.3'
 	distributionType = Wrapper.DistributionType.ALL
