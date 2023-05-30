@@ -95,6 +95,38 @@ public class TaskControllerIT {
         assertThat(task).hasSize(1);
     }
 
+    @Test
+    public void getTaskByFilter() throws Exception {
+        utils.regDefaultTask();
+        final Long taskStatusId = taskRepository.findAll().get(0).getTaskStatus().getId();
+        final Long executorId = taskRepository.findAll().get(0).getExecutor().getId();
+        final var response = utils.perform(get(
+                FULL_TASK_CONTROLLER_PATH + "?taskStatus=" + taskStatusId + "&executorId=" + executorId),
+                        TEST_USERNAME)
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+
+        final List<Task> task = TestUtils.fromJson(response.getContentAsString(), new TypeReference<>() { });
+        assertThat(task).hasSize(1);
+        assertThat(taskStatusId).isEqualTo(task.get(0).getTaskStatus().getId());
+        assertThat(executorId).isEqualTo(task.get(0).getExecutor().getId());
+    }
+
+    @Test
+    public void getTaskByFilterFail() throws Exception {
+        utils.regDefaultTask();
+        final Long taskStatusId = taskRepository.findAll().get(0).getTaskStatus().getId();
+        final var response = utils.perform(get(FULL_TASK_CONTROLLER_PATH + "?taskStatus=101"),
+                        TEST_USERNAME)
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+
+        final List<Task> task = TestUtils.fromJson(response.getContentAsString(), new TypeReference<>() { });
+        assertThat(task).isEmpty();
+    }
+
 
     @Test
     public void updateTask() throws Exception {
