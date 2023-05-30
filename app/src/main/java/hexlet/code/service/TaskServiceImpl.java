@@ -1,5 +1,6 @@
 package hexlet.code.service;
 
+import com.querydsl.core.types.Predicate;
 import hexlet.code.model.Label;
 import hexlet.code.repository.LabelRepository;
 import hexlet.code.repository.TaskRepository;
@@ -15,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Transactional
@@ -30,8 +33,10 @@ public class TaskServiceImpl implements TaskService {
     private LabelRepository labelRepository;
 
     @Override
-    public List<Task> getAllTask() {
-        return taskRepository.findAll();
+    public List<Task> getAllTask(Predicate predicate) {
+        return StreamSupport
+                .stream(taskRepository.findAll(predicate).spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     @Override
