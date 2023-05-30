@@ -5,6 +5,12 @@ import com.querydsl.core.types.Predicate;
 import hexlet.code.dto.TaskDto;
 import hexlet.code.model.Task;
 import hexlet.code.service.TaskService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpStatus;
@@ -41,31 +47,61 @@ public class TaskController {
 
     private TaskService taskService;
 
+    @Operation(summary = "Get all task")
+    @ApiResponses(@ApiResponse(responseCode = "200", content =
+        @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))))
     @GetMapping
     public List<Task> getAllTask(@QuerydslPredicate (root = Task.class)Predicate predicate) {
        return taskService.getAllTask(predicate);
     }
 
+    @Operation(summary = "Return task by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "The task is found", content =
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))),
+            @ApiResponse(responseCode = "404", description = "Task not found", content = @Content)
+    })
     @GetMapping(ID)
-    public Task getTaskById(@PathVariable final long id) {
+    public Task getTaskById(
+            @Parameter(description = "Id of task to be found")
+            @PathVariable final long id) {
         return taskService.getTaskById(id);
     }
 
+    @Operation(summary = "Create new task")
+    @ApiResponses(@ApiResponse(responseCode = "201", description = "task created", content =
+        @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))))
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Task createTask(@RequestBody @Valid final TaskDto taskDto) {
+    public Task createTask(
+            @Parameter(description = "task data to save")
+            @RequestBody @Valid final TaskDto taskDto) {
         return taskService.createTask(taskDto);
     }
-
+    @Operation(summary = "Change data of task")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "task changed", content =
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))),
+            @ApiResponse(responseCode = "404", description = "The task with this id is not found",
+                    content = @Content),
+            @ApiResponse(responseCode = "422", description = "Invalid request",
+                    content = @Content)
+    })
     @PutMapping(ID)
-    public Task updateTask(@PathVariable final long id,
-                           @RequestBody @Valid final TaskDto taskDto) {
+    public Task updateTask(
+            @Parameter(description = "Id of task data to be changed")
+            @PathVariable final long id,
+            @RequestBody @Valid final TaskDto taskDto) {
         return taskService.updateTaskById(id, taskDto);
     }
 
+    @Operation(summary = "Delete task")
+    @ApiResponses(@ApiResponse(responseCode = "200", description = "The task is deleted"))
     @PreAuthorize(ONLY_OWNER_BY_ID)
     @DeleteMapping(ID)
-    public void deleteTask(@PathVariable long id) {
+    public void deleteTask(
+            @Parameter(description = "Id of task to be deleted")
+            @PathVariable long id) {
         taskService.deleteTaskById(id);
     }
 }

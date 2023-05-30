@@ -4,6 +4,12 @@ package hexlet.code.controller;
 import hexlet.code.dto.LabelDto;
 import hexlet.code.model.Label;
 import hexlet.code.service.LabelService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,30 +39,63 @@ public class LabelController {
 
     private final LabelService labelService;
 
+
+    @Operation(summary = "Get all label")
+    @ApiResponses(@ApiResponse(responseCode = "200", content =
+        @Content(mediaType = "application/json", schema = @Schema(implementation = Label.class))))
     @GetMapping
     public List<Label> getAllLabel() {
         return labelService.getAllLabel();
     }
 
+    @Operation(summary = "Return label by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "The label is found", content =
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Label.class))),
+            @ApiResponse(responseCode = "404", description = "Label not found", content = @Content)
+    })
     @GetMapping(ID)
-    public Label getLabelById(@PathVariable final long id) {
+    public Label getLabelById(
+            @Parameter(description = "Id of label to be found")
+            @PathVariable final long id) {
         return labelService.getLabelById(id);
     }
 
+
+    @Operation(summary = "Create new label")
+    @ApiResponses(@ApiResponse(responseCode = "201", description = "label created", content =
+        @Content(mediaType = "application/json", schema = @Schema(implementation = Label.class))))
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Label createLabel(@RequestBody @Valid final LabelDto labelDto) {
+    public Label createLabel(
+            @Parameter(description = "label data to save")
+            @RequestBody @Valid final LabelDto labelDto) {
         return labelService.createLabel(labelDto);
     }
 
+    @Operation(summary = "Change data of label")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "label changed", content =
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Label.class))),
+            @ApiResponse(responseCode = "404", description = "The label with this id is not found",
+                    content = @Content),
+            @ApiResponse(responseCode = "422", description = "Invalid request",
+                    content = @Content)
+    })
     @PutMapping(ID)
-    public Label updateLabel(@PathVariable final long id,
-                             @RequestBody @Valid final LabelDto labelDto) {
+    public Label updateLabel(
+            @Parameter(description = "Id of label data to be changed")
+            @PathVariable final long id,
+            @RequestBody @Valid final LabelDto labelDto) {
         return labelService.updateLabelById(id, labelDto);
     }
 
+    @Operation(summary = "Delete label")
+    @ApiResponses(@ApiResponse(responseCode = "200", description = "The label is deleted"))
     @DeleteMapping(ID)
-    public void deleteLabel(@PathVariable final long id) {
+    public void deleteLabel(
+            @Parameter(description = "Id of label to be deleted")
+            @PathVariable final long id) {
         labelService.deleteLabelById(id);
     }
 }
