@@ -25,5 +25,4 @@ public class RollbarConfig {
                 .environment("development")
                 .build();
     }
-
 }
