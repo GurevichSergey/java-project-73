@@ -20,7 +20,6 @@ public class RollbarConfig {
     }
 
     private Config getRollbarConfigs(String accessToken) {
-        rollbar().debug("Here");
         return RollbarSpringConfigBuilder.withAccessToken(accessToken)
                 .environment("development")
                 .build();
