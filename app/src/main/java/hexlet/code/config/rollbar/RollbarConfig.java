@@ -1,0 +1,29 @@
+package hexlet.code.config.rollbar;
+
+
+import com.rollbar.notifier.Rollbar;
+import com.rollbar.notifier.config.Config;
+import com.rollbar.spring.webmvc.RollbarSpringConfigBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan({
+        "hexlet.code"
+})
+public class RollbarConfig {
+    @Bean
+    public Rollbar rollbar() {
+
+        return new Rollbar(getRollbarConfigs("<ServerAccessToken>"));
+    }
+
+    private Config getRollbarConfigs(String accessToken) {
+        rollbar().debug("Here");
+        return RollbarSpringConfigBuilder.withAccessToken(accessToken)
+                .environment("development")
+                .build();
+    }
+
+}
