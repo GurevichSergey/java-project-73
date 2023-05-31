@@ -29,7 +29,6 @@ import static hexlet.code.controller.UserController.USER_CONTROLLER_PATH;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.GET;
 
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
