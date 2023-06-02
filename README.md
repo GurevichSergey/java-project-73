@@ -6,7 +6,7 @@
 
 ## Менеджер задач
 
-[Task Manager](java-project-73-production-92a3.up.railway.app/) - система управления задачами, подобная http://www.redmine.org/. Она позволяет ставить задачи, назначать исполнителей и менять их статусы. Для работы с системой требуется регистрация и аутентификация.
+[Task Manager](https://java-project-73-production-92a3.up.railway.app/) - система управления задачами, подобная http://www.redmine.org/. Она позволяет ставить задачи, назначать исполнителей и менять их статусы. Для работы с системой требуется регистрация и аутентификация.
 
 
 [API documentation](https://java-project-73-production-92a3.up.railway.app/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config) - документация для описания REST API
