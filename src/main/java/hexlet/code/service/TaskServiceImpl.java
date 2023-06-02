@@ -78,8 +78,8 @@ public class TaskServiceImpl implements TaskService {
         final User author = userService.getCurrentUser();
         final User executor = taskDto.getExecutorId() == null ? null
                 : userRepository.findById(taskDto.getExecutorId()).get();
-        final List<Label> labels = taskDto.getLabelsIds() == null ? null
-                : labelRepository.findAllById(taskDto.getLabelsIds());
+        final List<Label> labels = taskDto.getLabelIds() == null ? null
+                : labelRepository.findAllById(taskDto.getLabelIds());
         final TaskStatus taskStatus = taskStatusRepository.findById(taskDto.getTaskStatusId()).get();
 
         return Task.builder()

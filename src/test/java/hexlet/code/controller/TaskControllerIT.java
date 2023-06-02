@@ -99,9 +99,9 @@ public class TaskControllerIT {
     public void getTaskByFilter() throws Exception {
         utils.regDefaultTask();
         final Long taskStatusId = taskRepository.findAll().get(0).getTaskStatus().getId();
-        final Long executorId = taskRepository.findAll().get(0).getExecutor().getId();
+        final Long labelsId = taskRepository.findAll().get(0).getLabels().get(0).getId();
         final var response = utils.perform(get(
-                FULL_TASK_CONTROLLER_PATH + "?taskStatus=" + taskStatusId + "&executorId=" + executorId),
+                FULL_TASK_CONTROLLER_PATH + "?taskStatus=" + taskStatusId + "&labelsId=" + labelsId),
                         TEST_USERNAME)
                 .andExpect(status().isOk())
                 .andReturn()
@@ -110,7 +110,7 @@ public class TaskControllerIT {
         final List<Task> task = TestUtils.fromJson(response.getContentAsString(), new TypeReference<>() { });
         assertThat(task).hasSize(1);
         assertThat(taskStatusId).isEqualTo(task.get(0).getTaskStatus().getId());
-        assertThat(executorId).isEqualTo(task.get(0).getExecutor().getId());
+        assertThat(labelsId).isEqualTo(task.get(0).getLabels().get(0).getId());
     }
 
     @Test
