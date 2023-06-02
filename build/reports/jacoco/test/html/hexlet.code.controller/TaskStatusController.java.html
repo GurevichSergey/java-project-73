@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskStatusController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">hexlet.code.controller</a> &gt; <span class="el_source">TaskStatusController.java</span></div><h1>TaskStatusController.java</h1><pre class="source lang-java linenums">package hexlet.code.controller;
+
+
+import hexlet.code.dto.TaskStatusDto;
+import hexlet.code.model.TaskStatus;
+import hexlet.code.service.TaskStatusService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+import java.util.List;
+
+import static hexlet.code.controller.TaskStatusController.TASK_STATUS_CONTROLLER_PATH;
+
+
+@RestController
+<span class="fc" id="L32">@AllArgsConstructor</span>
+@RequestMapping(&quot;${base-url}&quot; + TASK_STATUS_CONTROLLER_PATH)
+public class TaskStatusController {
+
+    public static final String TASK_STATUS_CONTROLLER_PATH = &quot;/statuses&quot;;
+
+    public static final String FULL_TASK_STATUS_CONTROLLER_PATH = &quot;/api/statuses&quot;;
+
+    public static final String ID = &quot;/{id}&quot;;
+
+
+    private final TaskStatusService taskStatusService;
+
+    @Operation(summary = &quot;Get all task status&quot;)
+    @ApiResponses(@ApiResponse(responseCode = &quot;200&quot;, content =
+        @Content(mediaType = &quot;application/json&quot;, schema = @Schema(implementation = TaskStatus.class))))
+    @GetMapping()
+    public List&lt;TaskStatus&gt; getAllTaskStatus() {
+<span class="fc" id="L50">        return taskStatusService.getAllTaskStatus();</span>
+    }
+
+    @Operation(summary = &quot;Return task status by id&quot;)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = &quot;200&quot;, description = &quot;The task status is found&quot;, content =
+                @Content(mediaType = &quot;application/json&quot;, schema = @Schema(implementation = TaskStatus.class))),
+            @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Task status not found&quot;, content = @Content)
+    })
+    @GetMapping(ID)
+    public TaskStatus getTaskStatusById(
+            @Parameter(description = &quot;Id of task status to be found&quot;)
+            @PathVariable final long id) {
+<span class="fc" id="L63">        return taskStatusService.getTaskStatusById(id);</span>
+    }
+
+    @Operation(summary = &quot;Create new task status&quot;)
+    @ApiResponses(@ApiResponse(responseCode = &quot;201&quot;, description = &quot;task status created&quot;, content =
+        @Content(mediaType = &quot;application/json&quot;, schema = @Schema(implementation = TaskStatus.class))))
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public TaskStatus createNewTaskStatus(
+            @Parameter(description = &quot;task status data to save&quot;)
+            @RequestBody @Valid final TaskStatusDto taskStatusDto) {
+<span class="fc" id="L74">        return taskStatusService.createNewTaskStatus(taskStatusDto);</span>
+    }
+
+    @Operation(summary = &quot;Change data of task status&quot;)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = &quot;200&quot;, description = &quot;task status changed&quot;, content =
+                @Content(mediaType = &quot;application/json&quot;, schema = @Schema(implementation = TaskStatus.class))),
+            @ApiResponse(responseCode = &quot;404&quot;, description = &quot;The task status with this id is not found&quot;,
+                    content = @Content),
+            @ApiResponse(responseCode = &quot;422&quot;, description = &quot;Invalid request&quot;,
+                    content = @Content)
+    })
+    @PutMapping(ID)
+    public TaskStatus updateTaskStatusById(
+            @Parameter(description = &quot;Id of task status to be changed&quot;)
+            @PathVariable final long id,
+            @RequestBody @Valid final TaskStatusDto taskStatusDto) {
+<span class="fc" id="L91">        return taskStatusService.updateTaskStatus(id, taskStatusDto);</span>
+    }
+
+    @Operation(summary = &quot;Delete task status&quot;)
+    @ApiResponses(@ApiResponse(responseCode = &quot;200&quot;, description = &quot;The task status is deleted&quot;))
+    @DeleteMapping(ID)
+    public void deleteTaskStatusById(
+            @Parameter(description = &quot;Id of task status to be changed&quot;)
+            @PathVariable final long id) {
+<span class="fc" id="L100">        taskStatusService.deleteTaskStatusById(id);</span>
+<span class="fc" id="L101">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

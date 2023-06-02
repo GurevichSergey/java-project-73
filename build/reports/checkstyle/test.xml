@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.2.1">
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/config/SpringConfigForIT.java">
+</file>
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/utils/TestUtils.java">
+</file>
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/controller/TaskStatusControllerIT.java">
+</file>
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/controller/LabelControllerIT.java">
+</file>
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/controller/UserControllerIT.java">
+</file>
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/controller/TaskControllerIT.java">
+</file>
+<file name="/Users/sergeygurevich/idea/java-project-73/src/test/java/hexlet/code/AppApplicationTests.java">
+</file>
+</checkstyle>

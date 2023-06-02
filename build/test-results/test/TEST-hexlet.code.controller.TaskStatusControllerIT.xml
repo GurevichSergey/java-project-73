@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hexlet.code.controller.TaskStatusControllerIT" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-06-02T13:30:54" hostname="MacBook-Pro-Sergej.local" time="0.389">
+  <properties/>
+  <testcase name="createTaskStatus()" classname="hexlet.code.controller.TaskStatusControllerIT" time="0.043"/>
+  <testcase name="getTaskStatusById()" classname="hexlet.code.controller.TaskStatusControllerIT" time="0.056"/>
+  <testcase name="getAllTaskStatus()" classname="hexlet.code.controller.TaskStatusControllerIT" time="0.072"/>
+  <testcase name="deleteTaskStatus()" classname="hexlet.code.controller.TaskStatusControllerIT" time="0.054"/>
+  <testcase name="updateTaskStatus()" classname="hexlet.code.controller.TaskStatusControllerIT" time="0.065"/>
+  <testcase name="twiceRegTheSameTaskStatusFail()" classname="hexlet.code.controller.TaskStatusControllerIT" time="0.087"/>
+  <system-out><![CDATA[Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select count(*) from statuses t1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0 where t1_0.id=?
+Hibernate: delete from statuses where id=?
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0 where t1_0.id=?
+Hibernate: update statuses set created_at=?, name=? where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+2023-06-02T23:30:55.096+10:00  WARN 48273 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23505, SQLState: 23505
+2023-06-02T23:30:55.097+10:00 ERROR 48273 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Нарушение уникального индекса или первичного ключа: "PUBLIC.UK_9OB63RKQG8PPAON1L37W8ID2P_INDEX_7 ON PUBLIC.STATUSES(NAME) VALUES 18"
+Unique index or primary key violation: "PUBLIC.UK_9OB63RKQG8PPAON1L37W8ID2P_INDEX_7 ON PUBLIC.STATUSES(NAME) VALUES 18"; SQL statement:
+insert into statuses (id, created_at, name) values (default, ?, ?) [23505-200]
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

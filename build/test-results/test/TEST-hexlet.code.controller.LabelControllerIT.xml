@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hexlet.code.controller.LabelControllerIT" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-06-02T13:30:49" hostname="MacBook-Pro-Sergej.local" time="1.969">
+  <properties/>
+  <testcase name="deleteLabel()" classname="hexlet.code.controller.LabelControllerIT" time="1.442"/>
+  <testcase name="getLabelById()" classname="hexlet.code.controller.LabelControllerIT" time="0.105"/>
+  <testcase name="updateLabel()" classname="hexlet.code.controller.LabelControllerIT" time="0.087"/>
+  <testcase name="getAllLabel()" classname="hexlet.code.controller.LabelControllerIT" time="0.062"/>
+  <testcase name="twiceRegTheSameLabelFail()" classname="hexlet.code.controller.LabelControllerIT" time="0.13"/>
+  <testcase name="deleteLabelFail()" classname="hexlet.code.controller.LabelControllerIT" time="0.065"/>
+  <testcase name="createTask()" classname="hexlet.code.controller.LabelControllerIT" time="0.052"/>
+  <system-out><![CDATA[23:30:28.617 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [LabelControllerIT]: using SpringBootContextLoader
+23:30:28.632 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [hexlet.code.controller.LabelControllerIT]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:30:28.708 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [LabelControllerIT]: [DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer, ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer]
+23:30:29.000 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [LabelControllerIT]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, WithSecurityContextTestExecutionListener, EventPublishingTestExecutionListener, ReactorContextTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
+23:30:29.005 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [LabelControllerIT], class annotated with @DirtiesContext [false] with mode [null]
+23:30:29.022 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener -- Performing dependency injection for test class hexlet.code.controller.LabelControllerIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.6)
+
+2023-06-02T23:30:30.122+10:00  INFO 48273 --- [    Test worker] h.code.controller.LabelControllerIT      : Starting LabelControllerIT using Java 17.0.4.1 with PID 48273 (started by sergeygurevich in /Users/sergeygurevich/idea/java-project-73)
+2023-06-02T23:30:30.139+10:00  INFO 48273 --- [    Test worker] h.code.controller.LabelControllerIT      : The following 1 profile is active: "test"
+2023-06-02T23:30:34.741+10:00  INFO 48273 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-02T23:30:34.929+10:00  INFO 48273 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 173 ms. Found 4 JPA repository interfaces.
+2023-06-02T23:30:36.874+10:00  INFO 48273 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2023-06-02T23:30:36.918+10:00  INFO 48273 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-02T23:30:36.920+10:00  INFO 48273 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-02T23:30:37.143+10:00  INFO 48273 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-02T23:30:37.149+10:00  INFO 48273 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6962 ms
+2023-06-02T23:30:37.778+10:00  INFO 48273 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-02T23:30:38.154+10:00  INFO 48273 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:163e6291-6278-40df-a962-819b964fec16 user=SA
+2023-06-02T23:30:38.161+10:00  INFO 48273 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-02T23:30:38.298+10:00  INFO 48273 --- [    Test worker] liquibase.database                       : Set default schema name to PUBLIC
+2023-06-02T23:30:38.644+10:00  INFO 48273 --- [    Test worker] liquibase.lockservice                    : Successfully acquired change log lock
+2023-06-02T23:30:39.449+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2023-06-02T23:30:39.464+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-1::sergey (generated)
+2023-06-02T23:30:39.864+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Sequence hibernate_sequence created
+2023-06-02T23:30:39.865+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-1::sergey (generated) ran successfully in 11ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-2::sergey (generated)
+2023-06-02T23:30:39.896+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Table users created
+2023-06-02T23:30:39.897+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-2::sergey (generated) ran successfully in 16ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-3::sergey
+2023-06-02T23:30:39.905+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Table statuses created
+2023-06-02T23:30:39.907+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-3::sergey ran successfully in 6ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-4::sergey
+2023-06-02T23:30:39.915+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Table tasks created
+2023-06-02T23:30:39.916+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-4::sergey ran successfully in 6ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-5::sergey
+2023-06-02T23:30:39.932+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Table labels created
+2023-06-02T23:30:39.933+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-5::sergey ran successfully in 7ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-6::sergey
+2023-06-02T23:30:39.942+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Table tasks_labels created
+2023-06-02T23:30:39.943+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-6::sergey ran successfully in 7ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-7::sergey (generated)
+2023-06-02T23:30:39.963+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Unique constraint added to users(email)
+2023-06-02T23:30:39.963+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-7::sergey (generated) ran successfully in 16ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-8::sergey (generated)
+2023-06-02T23:30:39.972+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Unique constraint added to statuses(name)
+2023-06-02T23:30:39.973+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-8::sergey (generated) ran successfully in 5ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-9::sergey (generated)
+2023-06-02T23:30:39.980+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Unique constraint added to tasks(name)
+2023-06-02T23:30:39.981+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-9::sergey (generated) ran successfully in 5ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-10::sergey (generated)
+2023-06-02T23:30:39.989+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Unique constraint added to labels(name)
+2023-06-02T23:30:39.990+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-10::sergey (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-11::sergey (generated)
+2023-06-02T23:30:40.008+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Foreign key constraint added to tasks (author_id)
+2023-06-02T23:30:40.009+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-11::sergey (generated) ran successfully in 12ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-12::sergey (generated)
+2023-06-02T23:30:40.025+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Foreign key constraint added to tasks (executor_id)
+2023-06-02T23:30:40.026+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-12::sergey (generated) ran successfully in 7ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-13::sergey (generated)
+2023-06-02T23:30:40.041+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Foreign key constraint added to tasks (task_status_id)
+2023-06-02T23:30:40.042+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-13::sergey (generated) ran successfully in 9ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-14::sergey (generated)
+2023-06-02T23:30:40.058+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Foreign key constraint added to tasks_labels (labels_id)
+2023-06-02T23:30:40.060+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-14::sergey (generated) ran successfully in 7ms
+Running Changeset: db/changelog/changelog-master.xml::1640246443532-15::sergey (generated)
+2023-06-02T23:30:40.069+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : Foreign key constraint added to tasks_labels (task_id)
+2023-06-02T23:30:40.069+10:00  INFO 48273 --- [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/changelog-master.xml::1640246443532-15::sergey (generated) ran successfully in 6ms
+2023-06-02T23:30:40.081+10:00  INFO 48273 --- [    Test worker] liquibase.lockservice                    : Successfully released change log lock
+2023-06-02T23:30:40.336+10:00  INFO 48273 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-02T23:30:40.435+10:00  INFO 48273 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-06-02T23:30:41.003+10:00  INFO 48273 --- [    Test worker] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: drop table if exists labels cascade 
+Hibernate: drop table if exists statuses cascade 
+Hibernate: drop table if exists tasks cascade 
+Hibernate: drop table if exists tasks_labels cascade 
+Hibernate: drop table if exists users cascade 
+Hibernate: create table labels (id bigint generated by default as identity, created_at timestamp(6), name varchar(255), primary key (id))
+Hibernate: create table statuses (id bigint generated by default as identity, created_at timestamp(6), name varchar(255), primary key (id))
+Hibernate: create table tasks (id bigint generated by default as identity, created_at timestamp(6), description varchar(255), name varchar(255), author_id bigint not null, executor_id bigint, task_status_id bigint not null, primary key (id))
+Hibernate: create table tasks_labels (labels_id bigint not null, task_id bigint not null)
+Hibernate: create table users (id bigint generated by default as identity, created_at timestamp(6), email varchar(255), first_name varchar(255), last_name varchar(255), password varchar(255), primary key (id))
+Hibernate: alter table if exists labels add constraint UK_otpirygk7h1hmo02w999f7kmp unique (name)
+Hibernate: alter table if exists statuses add constraint UK_9ob63rkqg8ppaon1l37w8id2p unique (name)
+Hibernate: alter table if exists tasks add constraint UK_s90mh6056fm69w0ilwka74vut unique (name)
+Hibernate: alter table if exists users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+Hibernate: alter table if exists tasks add constraint FKhods8r8oyyx7tuj3c91ki2sk1 foreign key (author_id) references users
+Hibernate: alter table if exists tasks add constraint FKbrg922bkqn5m7212jsqjg6ioe foreign key (executor_id) references users
+Hibernate: alter table if exists tasks add constraint FKdv9k4oaxnrxb91o32qq1tes7s foreign key (task_status_id) references statuses
+Hibernate: alter table if exists tasks_labels add constraint FKkl69kcbqw6pusaxtr7olwcn7l foreign key (task_id) references labels
+Hibernate: alter table if exists tasks_labels add constraint FKcuobw9e3o9r6qngs2dh2rwqrm foreign key (labels_id) references tasks
+2023-06-02T23:30:43.048+10:00  INFO 48273 --- [    Test worker] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'file:/Users/sergeygurevich/idea/java-project-73/build/resources/main/import.sql'
+Hibernate: INSERT INTO users (id, first_name, last_name, email, password, created_at) VALUES (1, 'Retha', 'Astupenas', 'rastupenas0@mysql.com', '12345', '2022-01-01 00:00:00')
+Hibernate: INSERT INTO users (id, first_name, last_name, email, password, created_at) VALUES (2, 'Chandra', 'Eck', 'ceck1@oracle.com', '12345', '2022-01-02 00:00:00')
+Hibernate: INSERT INTO users (id, first_name, last_name, email, password, created_at) VALUES (3,'Sybila', 'Tomasino', 'stomasino2@lulu.com', '12345', '2022-01-03 00:00:00')
+Hibernate: INSERT INTO users (id, first_name, last_name, email, password, created_at) VALUES (4, 'Jacquelynn', 'Viner', 'jviner3@webeden.co.uk', '12345', '2022-01-04 00:00:00')
+Hibernate: INSERT INTO users (id, first_name, last_name, email, password, created_at) VALUES (5, 'Olivia', 'Spyvye', 'ospyvye4@ucsd.edu', '12345', '2022-01-05 00:00:00')
+Hibernate: INSERT INTO statuses (id, name, created_at) VALUES (1, 'created', '2022-01-05 00:00:00')
+Hibernate: INSERT INTO statuses (id, name, created_at) VALUES (2, 'updated', '2022-01-06 00:00:00')
+2023-06-02T23:30:43.071+10:00  INFO 48273 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-02T23:30:43.085+10:00  INFO 48273 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-02T23:30:43.310+10:00  INFO 48273 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2023-06-02T23:30:43.314+10:00  INFO 48273 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-02T23:30:43.575+10:00  WARN 48273 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-02T23:30:43.670+10:00  INFO 48273 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-02T23:30:46.308+10:00  INFO 48273 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-02T23:30:47.595+10:00  INFO 48273 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4278 ms
+2023-06-02T23:30:48.169+10:00  INFO 48273 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6815d598, org.springframework.security.web.context.SecurityContextHolderFilter@68e7231a, org.springframework.security.web.header.HeaderWriterFilter@30e38412, hexlet.code.filter.JWTAuthorizationFilter@6ffed2d3, hexlet.code.filter.JWTAuthenticationFilter@1edd0e27, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3af0e134, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b2c0940, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5df429f8, org.springframework.security.web.access.ExceptionTranslationFilter@6b58cd53, org.springframework.security.web.access.intercept.AuthorizationFilter@6b1d8e3f]
+2023-06-02T23:30:49.097+10:00  INFO 48273 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 53127 (http) with context path ''
+2023-06-02T23:30:49.133+10:00  INFO 48273 --- [    Test worker] h.code.controller.LabelControllerIT      : Started LabelControllerIT in 20.068 seconds (process running for 23.495)
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: select count(*) from labels l1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0 where l1_0.id=?
+Hibernate: delete from labels where id=?
+Hibernate: select count(*) from labels l1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: delete from users where id=?
+Hibernate: delete from users where id=?
+Hibernate: delete from users where id=?
+Hibernate: delete from users where id=?
+Hibernate: delete from users where id=?
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0 where l1_0.id=?
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: delete from labels where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0 where l1_0.id=?
+Hibernate: update labels set created_at=?, name=? where id=?
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: delete from labels where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: delete from labels where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+2023-06-02T23:30:51.003+10:00  WARN 48273 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23505, SQLState: 23505
+2023-06-02T23:30:51.004+10:00 ERROR 48273 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Нарушение уникального индекса или первичного ключа: "PUBLIC.UK_OTPIRYGK7H1HMO02W999F7KMP_INDEX_8 ON PUBLIC.LABELS(NAME) VALUES 5"
+Unique index or primary key violation: "PUBLIC.UK_OTPIRYGK7H1HMO02W999F7KMP_INDEX_8 ON PUBLIC.LABELS(NAME) VALUES 5"; SQL statement:
+insert into labels (id, created_at, name) values (default, ?, ?) [23505-200]
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: delete from labels where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: select count(*) from labels l1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: delete from labels where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select count(*) from labels l1_0
+Hibernate: insert into labels (id, created_at, name) values (default, ?, ?)
+Hibernate: select count(*) from labels l1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: delete from labels where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

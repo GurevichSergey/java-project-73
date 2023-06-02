@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JWTAuthorizationFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">hexlet.code.filter</a> &gt; <span class="el_source">JWTAuthorizationFilter.java</span></div><h1>JWTAuthorizationFilter.java</h1><pre class="source lang-java linenums">package hexlet.code.filter;
+
+import hexlet.code.component.JWTHelper;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Optional;
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY;
+import static hexlet.code.config.security.SecurityConfig.DEFAULT_AUTHORITIES;
+
+public class JWTAuthorizationFilter extends OncePerRequestFilter {
+
+    private static final String BEARER = &quot;Bearer&quot;;
+
+    private final RequestMatcher publicUrls;
+    private final JWTHelper jwtHelper;
+
+    public JWTAuthorizationFilter(final RequestMatcher publicUrls,
+<span class="fc" id="L28">                                  final JWTHelper jwtHelper) {</span>
+<span class="fc" id="L29">        this.publicUrls = publicUrls;</span>
+<span class="fc" id="L30">        this.jwtHelper = jwtHelper;</span>
+<span class="fc" id="L31">    }</span>
+
+    @Override
+    protected boolean shouldNotFilter(final HttpServletRequest request) {
+<span class="fc" id="L35">        return publicUrls.matches(request);</span>
+    }
+
+    @Override
+    protected void doFilterInternal(final HttpServletRequest request,
+                                   final HttpServletResponse response,
+                                   final FilterChain filterChain) throws ServletException, IOException {
+
+<span class="fc" id="L43">        final var authToken = Optional.ofNullable(request.getHeader(AUTHORIZATION))</span>
+<span class="fc" id="L44">                .map(headers -&gt; headers.replaceFirst(&quot;^&quot; + BEARER, &quot;&quot;))</span>
+<span class="fc" id="L45">                .map(String::trim)</span>
+<span class="fc" id="L46">                .map(jwtHelper::verify)</span>
+<span class="fc" id="L47">                .map(claims -&gt; claims.get(SPRING_SECURITY_FORM_USERNAME_KEY))</span>
+<span class="fc" id="L48">                .map(Object::toString)</span>
+<span class="fc" id="L49">                .map(this::buildAuthToken)</span>
+<span class="fc" id="L50">                .orElseThrow();</span>
+
+<span class="fc" id="L52">        SecurityContextHolder.getContext().setAuthentication(authToken);</span>
+<span class="fc" id="L53">        filterChain.doFilter(request, response);</span>
+<span class="fc" id="L54">    }</span>
+
+    private UsernamePasswordAuthenticationToken buildAuthToken(final String username) {
+<span class="fc" id="L57">        return new UsernamePasswordAuthenticationToken(</span>
+                username,
+                null,
+                DEFAULT_AUTHORITIES
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

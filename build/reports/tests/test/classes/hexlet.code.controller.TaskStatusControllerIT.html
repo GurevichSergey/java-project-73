@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TaskStatusControllerIT</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TaskStatusControllerIT</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/hexlet.code.controller.html">hexlet.code.controller</a> &gt; TaskStatusControllerIT</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">6</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.377s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createTaskStatus()</td>
+<td class="success">0.043s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteTaskStatus()</td>
+<td class="success">0.054s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAllTaskStatus()</td>
+<td class="success">0.072s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getTaskStatusById()</td>
+<td class="success">0.056s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">twiceRegTheSameTaskStatusFail()</td>
+<td class="success">0.087s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">updateTaskStatus()</td>
+<td class="success">0.065s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select count(*) from statuses t1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0 where t1_0.id=?
+Hibernate: delete from statuses where id=?
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0 where t1_0.id=?
+Hibernate: update statuses set created_at=?, name=? where id=?
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select count(*) from statuses t1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+Hibernate: insert into statuses (id, created_at, name) values (default, ?, ?)
+2023-06-02T23:30:55.096+10:00  WARN 48273 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23505, SQLState: 23505
+2023-06-02T23:30:55.097+10:00 ERROR 48273 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Нарушение уникального индекса или первичного ключа: &quot;PUBLIC.UK_9OB63RKQG8PPAON1L37W8ID2P_INDEX_7 ON PUBLIC.STATUSES(NAME) VALUES 18&quot;
+Unique index or primary key violation: &quot;PUBLIC.UK_9OB63RKQG8PPAON1L37W8ID2P_INDEX_7 ON PUBLIC.STATUSES(NAME) VALUES 18&quot;; SQL statement:
+insert into statuses (id, created_at, name) values (default, ?, ?) [23505-200]
+Hibernate: select t1_0.id,t1_0.author_id,t1_0.created_at,t1_0.description,t1_0.executor_id,t1_0.name,t1_0.task_status_id from tasks t1_0
+Hibernate: select l1_0.id,l1_0.created_at,l1_0.name from labels l1_0
+Hibernate: select t1_0.id,t1_0.created_at,t1_0.name from statuses t1_0
+Hibernate: delete from statuses where id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password from users u1_0
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.6.1</a> at 2 июн. 2023 г., 23:30:57</p>
+</div>
+</div>
+</body>
+</html>
