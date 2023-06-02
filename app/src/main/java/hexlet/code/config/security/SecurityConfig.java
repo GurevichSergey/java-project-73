@@ -26,8 +26,8 @@ import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import static hexlet.code.controller.UserController.USER_CONTROLLER_PATH;
-import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 
 @Configuration
@@ -59,7 +59,6 @@ public class SecurityConfig  {
                 new NegatedRequestMatcher(new AntPathRequestMatcher(baseUrl + "/**"))
         );
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {

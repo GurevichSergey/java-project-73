@@ -51,7 +51,7 @@ public class TaskController {
     @ApiResponses(@ApiResponse(responseCode = "200", content =
         @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))))
     @GetMapping
-    public List<Task> getAllTask(@QuerydslPredicate (root = Task.class)Predicate predicate) {
+    public List<Task> getAllTask(@QuerydslPredicate(root = Task.class) Predicate predicate) {
        return taskService.getAllTask(predicate);
     }
 
