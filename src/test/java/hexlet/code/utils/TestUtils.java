@@ -96,7 +96,6 @@ public class TestUtils {
         return new TaskDto(
                 "new task",
                 "Fix bug",
-                authorId,
                 executorId,
                 taskStatusId,
                 List.of(labelIds)

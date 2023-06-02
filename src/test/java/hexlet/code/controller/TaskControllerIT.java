@@ -139,7 +139,6 @@ public class TaskControllerIT {
         final var newTaskDto = new TaskDto(
                 "really new task",
                 "chillout",
-                task.getAuthor().getId(),
                 task.getExecutor().getId(),
                 task.getTaskStatus().getId(),
                 labelsIds
@@ -171,7 +170,6 @@ public class TaskControllerIT {
         final var newTaskDto = new TaskDto(
                 "really new task",
                 null,
-                task.getAuthor().getId(),
                 null,
                 task.getTaskStatus().getId(),
                 null
