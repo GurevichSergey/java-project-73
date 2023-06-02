@@ -32,6 +32,8 @@ public class TaskServiceImpl implements TaskService {
 
     private LabelRepository labelRepository;
 
+    private UserService userService;
+
     @Override
     public List<Task> getAllTask(Predicate predicate) {
         return StreamSupport
@@ -73,7 +75,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private Task fromDto(final TaskDto taskDto) {
-        final User author = userRepository.findById(taskDto.getAuthorId()).get();
+        final User author = userService.getCurrentUser();
         final User executor = taskDto.getExecutorId() == null ? null
                 : userRepository.findById(taskDto.getExecutorId()).get();
         final List<Label> labels = taskDto.getLabelsIds() == null ? null

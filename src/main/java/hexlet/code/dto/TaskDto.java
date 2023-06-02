@@ -18,9 +18,6 @@ public class TaskDto {
 
     private String description;
 
-    @NotNull
-    private Long authorId;
-
     private Long executorId;
 
     @NotNull
