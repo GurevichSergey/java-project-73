@@ -24,6 +24,7 @@ import java.util.List;
 import static hexlet.code.controller.UserController.FULL_USER_CONTROLLER_PATH;
 import static hexlet.code.controller.UserController.ID;
 import static hexlet.code.config.security.SecurityConfig.LOGIN;
+import static hexlet.code.utils.TestUtils.asJson;
 import static org.assertj.core.api.Assertions.assertThat;
 import static hexlet.code.config.SpringConfigForIT.TEST_PROFILE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -60,6 +61,21 @@ public class UserControllerIT {
         assertEquals(0, userRepository.count());
         utils.regDefaultUser().andExpect(status().isCreated());
         assertEquals(1, userRepository.count());
+    }
+
+    @Test
+    public void createUser() throws Exception {
+        final var user = new UserDto(
+                "Malika",
+                "Hodkiewicz",
+                "malika_hodkiewicz75@live.com",
+                "RLJvaIgPOnX5r03");
+
+        final var request = post(FULL_USER_CONTROLLER_PATH)
+                .content(asJson(user))
+                .contentType(MediaType.APPLICATION_JSON);
+
+        final var response = utils.perform(request).andExpect(status().isCreated());
     }
 
     @Test
@@ -118,7 +134,7 @@ public class UserControllerIT {
                 utils.getTestRegistrationDto().getPassword()
         );
         final var loginRequest = post("/api" + LOGIN)
-                .content(TestUtils.asJson(loginDto))
+                .content(asJson(loginDto))
                 .contentType(MediaType.APPLICATION_JSON);
         utils.perform(loginRequest).andExpect(status().isOk());
     }
@@ -129,7 +145,7 @@ public class UserControllerIT {
                 utils.getTestRegistrationDto().getEmail(),
                 utils.getTestRegistrationDto().getPassword()
         );
-        final var loginRequest = post("/api" + LOGIN).content(TestUtils.asJson(loginDto))
+        final var loginRequest = post("/api" + LOGIN).content(asJson(loginDto))
                 .contentType(MediaType.APPLICATION_JSON);
         utils.perform(loginRequest).andExpect(status().isUnauthorized());
     }
@@ -142,7 +158,7 @@ public class UserControllerIT {
         final var userDto = new UserDto("new Name", "new lastName", TestUtils.TEST_USERNAME_2, "new pass");
 
         final var updateRequest = put(FULL_USER_CONTROLLER_PATH + ID, userId)
-                .content(TestUtils.asJson(userDto))
+                .content(asJson(userDto))
                 .contentType(MediaType.APPLICATION_JSON);
 
         utils.perform(updateRequest, TestUtils.TEST_USERNAME).andExpect(status().isOk());
@@ -159,7 +175,7 @@ public class UserControllerIT {
         final var userDto = new UserDto("new Name", "new lastName", TestUtils.TEST_USERNAME_2, "new pass");
 
         final var updateRequest = put(FULL_USER_CONTROLLER_PATH + ID, userId)
-                .content(TestUtils.asJson(userDto))
+                .content(asJson(userDto))
                 .contentType(MediaType.APPLICATION_JSON);
 
         utils.perform(updateRequest, TestUtils.TEST_USERNAME).andExpect(status().isOk());
