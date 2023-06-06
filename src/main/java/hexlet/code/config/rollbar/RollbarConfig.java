@@ -4,6 +4,7 @@ package hexlet.code.config.rollbar;
 import com.rollbar.notifier.Rollbar;
 import com.rollbar.notifier.config.Config;
 import com.rollbar.spring.webmvc.RollbarSpringConfigBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +15,14 @@ import org.springframework.context.annotation.Configuration;
         "com.rollbar.spring"
 })
 public class RollbarConfig {
+
+    @Value("${rollbar_token:}")
+    private String rollbarToken;
+
     @Bean
     public Rollbar rollbar() {
 
-        return new Rollbar(getRollbarConfigs("f0c1cdc217c646a28dd335bdf0a385f4"));
+        return new Rollbar(getRollbarConfigs(rollbarToken));
     }
 
     private Config getRollbarConfigs(String accessToken) {
