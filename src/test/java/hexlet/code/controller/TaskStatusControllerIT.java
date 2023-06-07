@@ -8,7 +8,6 @@ import hexlet.code.dto.TaskStatusDto;
 import hexlet.code.model.TaskStatus;
 import hexlet.code.utils.TestUtils;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +49,6 @@ public class TaskStatusControllerIT {
 
     @AfterEach
     public void clear() {
-        utils.tearDown();
-    }
-
-    @BeforeEach
-    public void clear2() {
         utils.tearDown();
     }
 
